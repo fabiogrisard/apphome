@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Sugestões e Dúvidas</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/fabiogrisard/apphome/refs/heads/main/iconhome.ico" sizes="64x64">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #004aad;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        img.logo {
+            width: 150px;
+        }
+        button {
+            background-color: #5ae2e6;
+            color: #004aad;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        .content {
+            display: none;
+            width: 100%;
+            height: calc(100vh - 100px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #ffffff;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img class="logo" src="https://raw.githubusercontent.com/fabiogrisard/apphome/refs/heads/main/Imagem%20do%20WhatsApp%20de%202025-01-23%20%C3%A0(s)%2022.54.38_38e2ee8a.jpg" alt="Logo da Empresa">
+    </header>
+
+    <button onclick="showContent('formulario')">Sugestão/Críticas/Elogios</button>
+    <button onclick="showContent('duvidas')">Dúvidas</button>
+
+    <div id="formulario" class="content">
+        <span class="back-button" onclick="hideContent()">&larr;</span>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZeN_A3JmY6xVN5h_2ETB7Ibw7W4Hn8f9Szgl6YJnIEX7SNw/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+    </div>
+
+    <div id="duvidas" class="content">
+        <span class="back-button" onclick="hideContent()">&larr;</span>
+        <iframe src="https://udify.app/chatbot/t5KjqeD6c2QuyY82" style="width: 100%; height: 100%; min-height: 700px" frameborder="0" allow="microphone"></iframe>
+    </div>
+
+    <script>
+        function showContent(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function hideContent() {
+            document.querySelectorAll('.content').forEach(content => {
+                content.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
