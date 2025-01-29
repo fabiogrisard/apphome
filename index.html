@@ -70,24 +70,28 @@
             background-color: #004aad;
             border-radius: 5px 0 0 5px;
         }
-        .social-icons a, .social-icons span {
+        .social-icons a {
             text-decoration: none;
             color: #fff;
             font-size: 24px;
             transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
         }
-        .social-icons a:hover, .social-icons span:hover {
+        .social-icons a:hover {
             color: #5ae2e6;
         }
         .back-button {
-            background-color: #87CEEB;
+            background-color: #87CEEB; /* Fundo diferenciado para o botão de voltar */
             color: #004aad;
+            padding: 10px;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+            width: 100%;
+            border-radius: 5px 0 0 0;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #5ae2e6;
+            color: #ffffff;
         }
     </style>
 </head>
@@ -100,35 +104,31 @@
     <button onclick="showContent('formulario')">Sugestão/Críticas/Elogios</button>
     <button onclick="showContent('duvidas')">Dúvidas</button>
 
+    <!-- Ícones sociais na página inicial -->
+    <div class="social-icons">
+        <a href="https://www.instagram.com/homestore.guarapuava/" >
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:mercadoguarapuava@gmail.com" >
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://wa.me/5542984441701" >
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Conteúdo das páginas específicas -->
     <div id="formulario" class="content">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZeN_A3JmY6xVN5h_2ETB7Ibw7W4Hn8f9Szgl6YJnIEX7SNw/viewform?embedded=true" style="width: 100%; height: calc(100vh - 100px);" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
         <div class="social-icons">
-            <span class="back-button" onclick="hideContent()">&larr;</span>
-            <a href="https://www.instagram.com/homestore.guarapuava/" >
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="mailto:mercadoguarapuava@gmail.com" >
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://wa.me/5542984441701" >
-                <i class="fab fa-whatsapp"></i>
-            </a>
+            <span class="back-button" onclick="hideContent()">&larr; Voltar</span>
         </div>
     </div>
 
     <div id="duvidas" class="content">
         <iframe src="https://udify.app/chatbot/t5KjqeD6c2QuyY82" style="width: 100%; height: calc(100vh - 100px);" frameborder="0" allow="microphone"></iframe>
         <div class="social-icons">
-            <span class="back-button" onclick="hideContent()">&larr;</span>
-            <a href="https://www.instagram.com/homestore.guarapuava/" >
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="mailto:mercadoguarapuava@gmail.com" >
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://wa.me/5542984441701" >
-                <i class="fab fa-whatsapp"></i>
-            </a>
+            <span class="back-button" onclick="hideContent()">&larr; Voltar</span>
         </div>
     </div>
 
