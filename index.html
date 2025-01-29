@@ -6,6 +6,8 @@
     <title>HomeStore</title>
     <link rel="icon" href="iconhome.ico" sizes="64x64">
     <link rel="manifest" href="manifest.json">
+    <!-- Link para o Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -62,6 +64,28 @@
             right: 20px;
             font-size: 36px;
             cursor: pointer;
+            z-index: 1000;
+        }
+        .social-icons {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 10px;
+            background-color: #004aad;
+            border-radius: 5px 0 0 5px;
+        }
+        .social-icons a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #5ae2e6;
         }
     </style>
 </head>
@@ -75,13 +99,25 @@
     <button onclick="showContent('duvidas')">Dúvidas</button>
 
     <div id="formulario" class="content">
-        <span class="back-button" onclick="hideContent()">&larr;</span>
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZeN_A3JmY6xVN5h_2ETB7Ibw7W4Hn8f9Szgl6YJnIEX7SNw/viewform?embedded=true" style="width: 100%; height: calc(100vh - 100px);" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+        <span class="back-button" onclick="hideContent()">&larr;</span>
     </div>
 
     <div id="duvidas" class="content">
-        <span class="back-button" onclick="hideContent()">&larr;</span>
         <iframe src="https://udify.app/chatbot/t5KjqeD6c2QuyY82" style="width: 100%; height: calc(100vh - 100px);" frameborder="0" allow="microphone"></iframe>
+        <span class="back-button" onclick="hideContent()">&larr;</span>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.instagram.com/homestore.guarapuava/" >
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:mercadoguarapuava@gmail.com" >
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://wa.me/5542984441701" >
+            <i class="fab fa-whatsapp"></i>
+        </a>
     </div>
 
     <script>
