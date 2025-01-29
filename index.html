@@ -34,6 +34,15 @@
             cursor: pointer;
             margin: 10px;
             border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        button:hover {
+            background-color: #004aad;
+            color: #ffffff;
+        }
+        button:active {
+            background-color: #003366;
+            color: #ffffff;
         }
         .content {
             display: none;
@@ -66,12 +75,12 @@
 
     <div id="formulario" class="content">
         <span class="back-button" onclick="hideContent()">&larr;</span>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZeN_A3JmY6xVN5h_2ETB7Ibw7W4Hn8f9Szgl6YJnIEX7SNw/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZeN_A3JmY6xVN5h_2ETB7Ibw7W4Hn8f9Szgl6YJnIEX7SNw/viewform?embedded=true" style="width: 100%; height: calc(100vh - 100px);" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
     </div>
 
     <div id="duvidas" class="content">
         <span class="back-button" onclick="hideContent()">&larr;</span>
-        <iframe src="https://udify.app/chatbot/t5KjqeD6c2QuyY82" style="width: 100%; height: 100%; min-height: 700px" frameborder="0" allow="microphone"></iframe>
+        <iframe src="https://udify.app/chatbot/t5KjqeD6c2QuyY82" style="width: 100%; height: calc(100vh - 100px);" frameborder="0" allow="microphone"></iframe>
     </div>
 
     <script>
