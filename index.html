@@ -58,14 +58,6 @@
             padding: 10px;
             box-sizing: border-box;
         }
-        .back-button {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 36px;
-            cursor: pointer;
-            z-index: 1000;
-        }
         .social-icons {
             position: fixed;
             top: 50%;
@@ -87,6 +79,19 @@
         .social-icons a:hover {
             color: #5ae2e6;
         }
+        .back-button {
+            background-color: #87CEEB;
+            color: #004aad;
+            font-size: 36px;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #5ae2e6;
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -100,24 +105,34 @@
 
     <div id="formulario" class="content">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZeN_A3JmY6xVN5h_2ETB7Ibw7W4Hn8f9Szgl6YJnIEX7SNw/viewform?embedded=true" style="width: 100%; height: calc(100vh - 100px);" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
-        <span class="back-button" onclick="hideContent()">&larr;</span>
+        <div class="social-icons">
+            <span class="back-button" onclick="hideContent()">&larr;</span>
+            <a href="https://www.instagram.com/homestore.guarapuava/" >
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:mercadoguarapuava@gmail.com" >
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://wa.me/5542984441701" >
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
     </div>
 
     <div id="duvidas" class="content">
         <iframe src="https://udify.app/chatbot/t5KjqeD6c2QuyY82" style="width: 100%; height: calc(100vh - 100px);" frameborder="0" allow="microphone"></iframe>
-        <span class="back-button" onclick="hideContent()">&larr;</span>
-    </div>
-
-    <div class="social-icons">
-        <a href="https://www.instagram.com/homestore.guarapuava/" >
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="mailto:mercadoguarapuava@gmail.com" >
-            <i class="fas fa-envelope"></i>
-        </a>
-        <a href="https://wa.me/5542984441701" >
-            <i class="fab fa-whatsapp"></i>
-        </a>
+        <div class="social-icons">
+            <span class="back-button" onclick="hideContent()">&larr;</span>
+            <a href="https://www.instagram.com/homestore.guarapuava/" >
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:mercadoguarapuava@gmail.com" >
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://wa.me/5542984441701" >
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
     </div>
 
     <script>
