@@ -92,10 +92,6 @@
             color: #004aad;
             cursor: pointer;
         }
-        #appContent {
-            display: none; /* Inicialmente oculto */
-            text-align: center; /* Centralizar conteúdo */
-        }
     </style>
 </head>
 <body>
@@ -104,26 +100,20 @@
         <img class="logo" src="https://raw.githubusercontent.com/fabiogrisard/apphome/refs/heads/main/Imagem%20do%20WhatsApp%20de%202025-01-23%20%C3%A0(s)%2022.54.38_38e2ee8a.jpg" alt="Logo da Empresa">
     </header>
 
-    <!-- Botão de Instalação -->
-    <button id="installButton" style="display: none;">Instalar App</button>
+    <button onclick="showContent('formulario')">Sugestão/Críticas/Elogios</button>
+    <button onclick="showContent('duvidas')">Dúvidas</button>
 
-    <!-- Conteúdo do app que aparece após instalação -->
-    <div id="appContent">
-        <button onclick="showContent('formulario')">Sugestão/Críticas/Elogios</button>
-        <button onclick="showContent('duvidas')">Dúvidas</button>
-
-        <!-- Ícones sociais na página inicial -->
-        <div class="social-icons">
-            <a href="https://www.instagram.com/homestore.guarapuava/">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="mailto:mercadoguarapuava@gmail.com">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://wa.me/5542984441701">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-        </div>
+    <!-- Ícones sociais na página inicial -->
+    <div class="social-icons">
+        <a href="https://www.instagram.com/homestore.guarapuava/">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:mercadoguarapuava@gmail.com">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://wa.me/5542984441701">
+            <i class="fab fa-whatsapp"></i>
+        </a>
     </div>
 
     <!-- Conteúdo das páginas específicas -->
@@ -174,40 +164,6 @@
             navigator.serviceWorker.register('/service-worker.js')
             .then(() => console.log('Service Worker registrado com sucesso.'))
             .catch((error) => console.log('Falha ao registrar o Service Worker:', error));
-        }
-
-        let deferredPrompt;
-        const installButton = document.getElementById('installButton');
-        const appContent = document.getElementById('appContent');
-
-        if ('getInstalledRelatedApps' in navigator) {
-            navigator.getInstalledRelatedApps().then((apps) => {
-                if (apps.length === 0) {
-                    window.addEventListener('beforeinstallprompt', (e) => {
-                        e.preventDefault();
-                        deferredPrompt = e;
-                        installButton.style.display = 'block';
-
-                        installButton.addEventListener('click', () => {
-                            deferredPrompt.prompt();
-                            deferredPrompt.userChoice.then((choiceResult) => {
-                                if (choiceResult.outcome === 'accepted') {
-                                    console.log('Usuário aceitou a instalação');
-                                    appContent.style.display = 'block';
-                                } else {
-                                    console.log('Usuário recusou a instalação');
-                                    installButton.style.display = 'block';
-                                }
-                                deferredPrompt = null;
-                            });
-                        });
-                    });
-                } else {
-                    installButton.style.display = 'none';
-                    appContent.style.display = 'block';
-                    console.log('App já está instalado');
-                }
-            });
         }
     </script>
 </body>
