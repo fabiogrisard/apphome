@@ -3,11 +3,10 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open('app-cache').then(cache => {
       return cache.addAll([
-        '/',
-        '/index.html',
-        '/styles.css',
-        '/iconhome.ico',
-        '/logo.png',
+        'https://fabiogrisard.github.io/apphome/', // Raiz do app
+        'https://fabiogrisard.github.io/apphome/index.html',
+        'https://fabiogrisard.github.io/apphome/iconhome.ico',
+        'https://fabiogrisard.github.io/apphome/logo.png',
         // Adicione mais recursos que deseja cachear
       ]);
     })
