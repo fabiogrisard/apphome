@@ -4,32 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instalar HomeStore</title>
-    <link rel="icon" href="iconhome.ico" sizes="64x64">
-    <!-- Estilo para Dispositivos Móveis -->
+    <link rel="manifest" href="manifest.json">
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #004aad;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #ffffff;
-            color: #004aad;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 20px;
         }
         img.logo {
-            width: 120px;
-            margin-bottom: 10px;
-        }
-        h1 {
-            font-size: 24px;
-            margin: 0;
-            color: #004aad;
+            width: 150px;
+            margin-bottom: 20px;
         }
         button {
             background-color: #5ae2e6;
@@ -40,7 +30,6 @@
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
-            margin-top: 20px;
         }
         button:hover {
             background-color: #004aad;
@@ -50,11 +39,9 @@
 </head>
 <body>
 
-    <header>
-        <img class="logo" src="https://raw.githubusercontent.com/fabiogrisard/apphome/refs/heads/main/Imagem%20do%20WhatsApp%20de%202025-01-23%20%C3%A0(s)%2022.54.38_38e2ee8a.jpg" alt="Logo da Empresa">
-        <h1>Instalar HomeStore</h1>
-    </header>
+    <img class="logo" src="https://raw.githubusercontent.com/fabiogrisard/apphome/refs/heads/main/Imagem%20do%20WhatsApp%20de%202025-01-23%20%C3%A0(s)%2022.54.38_38e2ee8a.jpg" alt="Logo da Empresa">
 
+    <!-- Botão de Instalação -->
     <button id="installButton" style="display: none;">Instalar App</button>
 
     <script>
@@ -72,13 +59,21 @@
                 deferredPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
                         console.log('Usuário aceitou a instalação');
+                        window.location.href = 'index.html'; // Redireciona para a página principal
                     } else {
                         console.log('Usuário recusou a instalação');
+                        installButton.style.display = 'block';
                     }
                     deferredPrompt = null;
                 });
             });
         });
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+            .then(() => console.log('Service Worker registrado com sucesso.'))
+            .catch((error) => console.log('Falha ao registrar o Service Worker:', error));
+        }
     </script>
 
 </body>
