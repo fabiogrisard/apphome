@@ -92,6 +92,9 @@
             color: #004aad;
             cursor: pointer;
         }
+        #appContent {
+            display: none; /* Inicialmente oculto */
+        }
     </style>
 </head>
 <body>
@@ -100,23 +103,26 @@
         <img class="logo" src="https://raw.githubusercontent.com/fabiogrisard/apphome/refs/heads/main/Imagem%20do%20WhatsApp%20de%202025-01-23%20%C3%A0(s)%2022.54.38_38e2ee8a.jpg" alt="Logo da Empresa">
     </header>
 
-    <button onclick="showContent('formulario')">Sugestão/Críticas/Elogios</button>
-    <button onclick="showContent('duvidas')">Dúvidas</button>
-
     <!-- Botão de Instalação -->
     <button id="installButton" style="display: none;">Instalar App</button>
 
-    <!-- Ícones sociais na página inicial -->
-    <div class="social-icons">
-        <a href="https://www.instagram.com/homestore.guarapuava/">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="mailto:mercadoguarapuava@gmail.com">
-            <i class="fas fa-envelope"></i>
-        </a>
-        <a href="https://wa.me/5542984441701">
-            <i class="fab fa-whatsapp"></i>
-        </a>
+    <!-- Conteúdo do app que aparece após instalação -->
+    <div id="appContent">
+        <button onclick="showContent('formulario')">Sugestão/Críticas/Elogios</button>
+        <button onclick="showContent('duvidas')">Dúvidas</button>
+
+        <!-- Ícones sociais na página inicial -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/homestore.guarapuava/">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:mercadoguarapuava@gmail.com">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://wa.me/5542984441701">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
     </div>
 
     <!-- Conteúdo das páginas específicas -->
@@ -171,6 +177,7 @@
 
         let deferredPrompt;
         const installButton = document.getElementById('installButton');
+        const appContent = document.getElementById('appContent');
 
         if ('getInstalledRelatedApps' in navigator) {
             navigator.getInstalledRelatedApps().then((apps) => {
@@ -186,14 +193,17 @@
                             deferredPrompt.userChoice.then((choiceResult) => {
                                 if (choiceResult.outcome === 'accepted') {
                                     console.log('Usuário aceitou a instalação');
+                                    appContent.style.display = 'block';
                                 } else {
                                     console.log('Usuário recusou a instalação');
+                                    installButton.style.display = 'block';
                                 }
                                 deferredPrompt = null;
                             });
                         });
                     });
                 } else {
+                    appContent.style.display = 'block';
                     console.log('App já está instalado');
                 }
             });
