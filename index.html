@@ -103,15 +103,18 @@
     <button onclick="showContent('formulario')">Sugestão/Críticas/Elogios</button>
     <button onclick="showContent('duvidas')">Dúvidas</button>
 
+    <!-- Botão de Instalação -->
+    <button id="installButton" style="display: none;">Instalar App</button>
+
     <!-- Ícones sociais na página inicial -->
     <div class="social-icons">
-        <a href="https://www.instagram.com/homestore.guarapuava/" >
+        <a href="https://www.instagram.com/homestore.guarapuava/">
             <i class="fab fa-instagram"></i>
         </a>
-        <a href="mailto:mercadoguarapuava@gmail.com" >
+        <a href="mailto:mercadoguarapuava@gmail.com">
             <i class="fas fa-envelope"></i>
         </a>
-        <a href="https://wa.me/5542984441701" >
+        <a href="https://wa.me/5542984441701">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
@@ -121,13 +124,13 @@
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZeN_A3JmY6xVN5h_2ETB7Ibw7W4Hn8f9Szgl6YJnIEX7SNw/viewform?embedded=true" style="width: 100%; height: calc(100vh - 100px);" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
         <div class="social-icons">
             <span class="back-button" onclick="hideContent()">&larr;</span>
-            <a href="https://www.instagram.com/homestore.guarapuava/" >
+            <a href="https://www.instagram.com/homestore.guarapuava/">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a href="mailto:mercadoguarapuava@gmail.com" >
+            <a href="mailto:mercadoguarapuava@gmail.com">
                 <i class="fas fa-envelope"></i>
             </a>
-            <a href="https://wa.me/5542984441701" >
+            <a href="https://wa.me/5542984441701">
                 <i class="fab fa-whatsapp"></i>
             </a>
         </div>
@@ -137,13 +140,13 @@
         <iframe src="https://udify.app/chatbot/t5KjqeD6c2QuyY82" style="width: 100%; height: calc(100vh - 100px);" frameborder="0" allow="microphone"></iframe>
         <div class="social-icons">
             <span class="back-button" onclick="hideContent()">&larr;</span>
-            <a href="https://www.instagram.com/homestore.guarapuava/" >
+            <a href="https://www.instagram.com/homestore.guarapuava/">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a href="mailto:mercadoguarapuava@gmail.com" >
+            <a href="mailto:mercadoguarapuava@gmail.com">
                 <i class="fas fa-envelope"></i>
             </a>
-            <a href="https://wa.me/5542984441701" >
+            <a href="https://wa.me/5542984441701">
                 <i class="fab fa-whatsapp"></i>
             </a>
         </div>
@@ -164,6 +167,36 @@
             navigator.serviceWorker.register('/service-worker.js')
             .then(() => console.log('Service Worker registrado com sucesso.'))
             .catch((error) => console.log('Falha ao registrar o Service Worker:', error));
+        }
+
+        let deferredPrompt;
+        const installButton = document.getElementById('installButton');
+
+        if ('getInstalledRelatedApps' in navigator) {
+            navigator.getInstalledRelatedApps().then((apps) => {
+                if (apps.length === 0) {
+                    window.addEventListener('beforeinstallprompt', (e) => {
+                        e.preventDefault();
+                        deferredPrompt = e;
+                        installButton.style.display = 'block';
+
+                        installButton.addEventListener('click', () => {
+                            installButton.style.display = 'none';
+                            deferredPrompt.prompt();
+                            deferredPrompt.userChoice.then((choiceResult) => {
+                                if (choiceResult.outcome === 'accepted') {
+                                    console.log('Usuário aceitou a instalação');
+                                } else {
+                                    console.log('Usuário recusou a instalação');
+                                }
+                                deferredPrompt = null;
+                            });
+                        });
+                    });
+                } else {
+                    console.log('App já está instalado');
+                }
+            });
         }
     </script>
 </body>
