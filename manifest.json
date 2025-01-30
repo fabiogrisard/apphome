@@ -1,6 +1,6 @@
 {
   "name": "HomeStore",
-  "short_name": "HomeStore",
+  "short_name": "HomeSt",
   "start_url": "https://fabiogrisard.github.io/apphome/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -12,8 +12,8 @@
       "type": "image/x-icon"
     },
     {
-      "src": "https://fabiogrisard.github.io/apphome/logo.png",
-      "sizes": "192x192",
+      "src": "https://raw.githubusercontent.com/fabiogrisard/apphome/refs/heads/main/Imagem%20do%20WhatsApp%20de%202025-01-23%20%C3%A0(s)%2022.54.38_38e2ee8a.jpg",
+      "sizes": "192x192",  // Ajuste conforme necessário
       "type": "image/png"
     }
   ]
