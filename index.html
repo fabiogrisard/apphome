@@ -94,6 +94,7 @@
         }
         #appContent {
             display: none; /* Inicialmente oculto */
+            text-align: center; /* Centralizar conteúdo */
         }
     </style>
 </head>
@@ -188,7 +189,6 @@
                         installButton.style.display = 'block';
 
                         installButton.addEventListener('click', () => {
-                            installButton.style.display = 'none';
                             deferredPrompt.prompt();
                             deferredPrompt.userChoice.then((choiceResult) => {
                                 if (choiceResult.outcome === 'accepted') {
@@ -203,6 +203,7 @@
                         });
                     });
                 } else {
+                    installButton.style.display = 'none';
                     appContent.style.display = 'block';
                     console.log('App já está instalado');
                 }
