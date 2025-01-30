@@ -1,6 +1,6 @@
 {
   "name": "HomeStore",
-  "short_name": "HomeSt",
+  "short_name": "HomeStore",
   "start_url": "https://fabiogrisard.github.io/apphome/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
